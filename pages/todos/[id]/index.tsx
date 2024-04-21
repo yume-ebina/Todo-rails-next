@@ -4,6 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 import Todo from "@/components/Todo";
 import { TodoType } from "@/types/Todo";
+import EditTodoForm from "@/components/EditTodoForm";
 
 // Todo詳細ページを表示するコンポーネント
 const TodoDetail = () => {
@@ -45,8 +46,14 @@ const TodoDetail = () => {
         <Todo todo={todo} />
         <div className="flex justify-end">
           <Link
+            href={`/todos/${id}/edit`}
+            className="mt-auto font-medium text-blue-600 hover:bg-blue-300 focus:outline-none mr-12"
+          >
+            Edit
+          </Link>
+          <Link
             href="/"
-            className="mt-auto font-medium text-blue-600 hover:text-blue-300 focus:outline-none"
+            className="mt-auto font-medium text-blue-600 hover:bg-blue-300 focus:outline-none"
           >
             Back
           </Link>
