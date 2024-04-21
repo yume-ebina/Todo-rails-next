@@ -12,11 +12,9 @@ const EditTodoForm = ({ id }: EditTodoFormProps) => {
 
   // フォームの入力値を管理するstate
   const [title, setTitle] = useState("");
-
-  // フォームの入力値を管理するstate
   const [content, setContent] = useState("");
 
-  // idが変更されたら(=Todo編集ページを開いたら)、Todoを取得してフォームの初期値を設定する
+  // iTodo編集ページを開いたら、Todoを取得してフォームの初期値を設定する
   useEffect(() => {
     // idが存在しない場合は、処理を中断する
     const fetchTodo = async () => {
@@ -33,7 +31,6 @@ const EditTodoForm = ({ id }: EditTodoFormProps) => {
       }
     };
 
-    // idが存在する場合は、Todoを取得する
     if (id) {
       fetchTodo();
     }
@@ -43,12 +40,10 @@ const EditTodoForm = ({ id }: EditTodoFormProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      // APIを呼び出して、Todoを更新する
       await axios.put(`http://localhost:3000/todos/${id}`, {
         todo: { title, content },
       });
 
-      // Todoの更新に成功したら、Todo詳細ページに遷移する
       router.push(`/todos/${id}`);
     } catch (error) {
       console.error(error);
