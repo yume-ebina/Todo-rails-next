@@ -5,6 +5,7 @@ import Link from "next/link";
 import Todo from "@/components/Todo";
 import { TodoType } from "@/types/Todo";
 import EditTodoForm from "@/components/EditTodoForm";
+import DeleteTodoButton from "@/components/DeleteTodoButton";
 
 // Todo詳細ページを表示するコンポーネント
 const TodoDetail = () => {
@@ -57,6 +58,7 @@ const TodoDetail = () => {
           >
             Back
           </Link>
+          <DeleteTodoButton id={todo.id} />
         </div>
       </div>
     </div>
